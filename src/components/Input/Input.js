@@ -1,35 +1,29 @@
 
-const Input = ({ title, label, type, defaultValue, register, valueAsNumber }) => {
+const Input = ({ title, label, type, register, valueAsNumber }) => {
     return (
         <div>
             <span>{title}</span>
             <input
             type={type}
-            defaultValue={defaultValue}
+            defaultValue=''
             {...register(label, { valueAsNumber,  })}
             />
         </div>
     );
 }
 
-export const DecimalInput = ({ title, label, defaultValue, register, valueAsNumber, errors }) => {
+export const DecimalInput = ({ title, label, type, register, valueAsNumber }) => {
     return (
         <div>
             <span>{title}</span>
-            <input 
-                defaultValue={defaultValue}
-                {...register(
-                    label, 
-                    { 
-                        valueAsNumber, 
-                        pattern: /^(0|[1-9]\d*)(\.\d+)?$/,
-                        message: "Please enter a valid number."
-                    }
-                )}
+            <input
+            type={type}
+            step="0.01"
+            defaultValue=''
+            {...register(label, { valueAsNumber,  })}
             />
-            {errors.label && <p>Please enter a valid number.</p>}
         </div>
-    )
+    );
 }
 
 export default Input

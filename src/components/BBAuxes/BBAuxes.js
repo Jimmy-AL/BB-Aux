@@ -149,6 +149,12 @@ const Form = () => {
     
     
     const onSubmit = data => {
+        Object.keys(data).map(key => {
+            if (isNaN(data[key])) {
+                data[key] = 0;
+            }
+        });
+        console.log(data)
         setFinal({...final, result: 0, calc: 0})
         setFirepower({
             base: data.fpBase, 
@@ -210,24 +216,24 @@ const Form = () => {
                 onClick={() =>
                     reset(
                         {
-                            accBase: 0,
-                            accEquips: 0,
-                            accBuffs: 0,
-                            accCats: 0,
-                            accHitRateBuff: 0,
-                            accTech: 0,
-                            critDmg: 0,
-                            critRate: 0,
-                            enemyEva: 0,
-                            enemyLck: 0,
-                            enemyLvlDiff: 0,
-                            fpBase: 0,
-                            fpBuffs: 0,
-                            fpCats: 0,
-                            fpGuns: 0,
-                            fpTech: 0,
-                            lckBase: 0,
-                            lckCats: 0,
+                            accBase: '',
+                            accEquips: '',
+                            accBuffs: '',
+                            accCats: '',
+                            accHitRateBuff: '',
+                            accTech: '',
+                            critDmg: '',
+                            critRate: '',
+                            enemyEva: '',
+                            enemyLck: '',
+                            enemyLvlDiff: '',
+                            fpBase: '',
+                            fpBuffs: '',
+                            fpCats: '',
+                            fpGuns: '',
+                            fpTech: '',
+                            lckBase: '',
+                            lckCats: '',
                             augs: false,
                             aa: false,
                             hms: false,
@@ -254,55 +260,55 @@ const Form = () => {
             <h3>Firepower</h3>
         </div>
         <div>
-            <Input title="Base" type="number" defaultValue="0" register={register} label="fpBase" valueAsNumber />
-            <Input title="Guns" type="number" defaultValue="0" register={register} label="fpGuns" valueAsNumber />
-            <Input title="Fleet Tech" type="number" defaultValue="0" register={register} label="fpTech" valueAsNumber />
-            <Input title="Cats" type="number" defaultValue="0" register={register} label="fpCats" valueAsNumber />
+            <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber />
+            <Input title="Guns" type="number" register={register} label="fpGuns" valueAsNumber />
+            <Input title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber />
+            <Input title="Cats" type="number" register={register} label="fpCats" valueAsNumber />
             <Tooltip text="Example: For a 30% FP buff, enter 30.">
-                <DecimalInput title="Buffs"  defaultValue="0" register={register} errors={errors} label="fpBuffs" valueAsNumber />
+                <DecimalInput title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber />
             </Tooltip>
         </div>
         <div>
             <h3>Accuracy</h3>
         </div>
         <div>
-            <Input title="Base" type="number" defaultValue="0" register={register} label="accBase" valueAsNumber />
-            <Input title="Equips" type="number" defaultValue="0" register={register} label="accEquips" valueAsNumber />
-            <Input title="Fleet Tech" type="number" defaultValue="0" register={register} label="accTech" valueAsNumber />
-            <Input title="Cats" type="number" defaultValue="0" register={register} label="accCats" valueAsNumber />
+            <Input title="Base" type="number" register={register} label="accBase" valueAsNumber />
+            <Input title="Equips" type="number" register={register} label="accEquips" valueAsNumber />
+            <Input title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber />
+            <Input title="Cats" type="number" register={register} label="accCats" valueAsNumber />
             <Tooltip text="For accuracy/hit STAT buffs. Example: For a 30% ACC buff, enter 30.">
-                <Input title="Buffs" type="number" defaultValue="0" register={register} label="accBuffs" valueAsNumber />
+                <DecimalInput title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber />
             </Tooltip>
             <Tooltip text="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10.">
-                <Input title="Hit Rate Buffs" type="number" defaultValue="0" register={register} label="accHitRateBuff" valueAsNumber />
+                <DecimalInput title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber />
             </Tooltip>
         </div>
         <div>
             <h3>Luck</h3>
         </div>
         <div>
-            <Input title="Base" type="number" defaultValue="0" register={register} label="lckBase" valueAsNumber />
-            <Input title="Cats" type="number" defaultValue="0" register={register} label="lckCats" valueAsNumber />
+            <Input title="Base" type="number" register={register} label="lckBase" valueAsNumber />
+            <Input title="Cats" type="number" register={register} label="lckCats" valueAsNumber />
         </div>
         <div>
             <h3>Critical Hit Buffs</h3>
         </div>
         <div>
             <Tooltip text="For critical rate buffs from skills/cats and NOT auxiliaries. For a 6% crit rate bonus enter 6.">
-                <Input title="Rate" type="number" defaultValue="0" register={register} label="critRate" valueAsNumber />
+                <Input title="Rate" type="number" register={register} label="critRate" valueAsNumber />
             </Tooltip>
             <Tooltip text="For critical damage buffs from skills/cats and NOT auxiliaries. For a 30% crit damage bonus enter 30.">
-                <Input title="Damage" type="number" defaultValue="0" register={register} label="critDmg" valueAsNumber />
+                <Input title="Damage" type="number" register={register} label="critDmg" valueAsNumber />
             </Tooltip>
         </div>
         <div>
             <h2>Enemy Stats</h2>
         </div>
         <div>
-            <Input title="Evasion" type="number" defaultValue="0" register={register} label="enemyEva" valueAsNumber />
-            <Input title="Luck" type="number" defaultValue="0" register={register} label="enemyLck" valueAsNumber />
+            <Input title="Evasion" type="number" register={register} label="enemyEva" valueAsNumber />
+            <Input title="Luck" type="number" register={register} label="enemyLck" valueAsNumber />
             <Tooltip text="Difference between attacker level and the enemy's. Example: Your ship is level 125 and the enemy is level 130. Enter -5.">
-                <Input title="Level Difference" type="number" defaultValue="0" register={register} label="enemyLvlDiff" valueAsNumber />
+                <Input title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber />
             </Tooltip>
             
         </div>
@@ -342,24 +348,24 @@ const Form = () => {
                 onClick={() =>
                     reset(
                         {
-                            accBase: 0,
-                            accEquips: 0,
-                            accBuffs: 0,
-                            accCats: 0,
-                            accHitRateBuff: 0,
-                            accTech: 0,
-                            critDmg: 0,
-                            critRate: 0,
-                            enemyEva: 0,
-                            enemyLck: 0,
-                            enemyLvlDiff: 0,
-                            fpBase: 0,
-                            fpBuffs: 0,
-                            fpCats: 0,
-                            fpGuns: 0,
-                            fpTech: 0,
-                            lckBase: 0,
-                            lckCats: 0,
+                            accBase: '',
+                            accEquips: '',
+                            accBuffs: '',
+                            accCats: '',
+                            accHitRateBuff: '',
+                            accTech: '',
+                            critDmg: '',
+                            critRate: '',
+                            enemyEva: '',
+                            enemyLck: '',
+                            enemyLvlDiff: '',
+                            fpBase: '',
+                            fpBuffs: '',
+                            fpCats: '',
+                            fpGuns: '',
+                            fpTech: '',
+                            lckBase: '',
+                            lckCats: '',
                             augs: false,
                             aa: false,
                             hms: false,
