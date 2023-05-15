@@ -396,7 +396,7 @@ const FinalResult = ({ result, other }) => {
         return(
             <div>
                 <div>
-                    Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1]}, Average Damage Increase From Critical Hits = {result.base[2]}. Total damage mod = {result.base[3]}
+                    Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
                 </div>
                 <div>
                     The best combination is {result.best[0]}, {result.best[1]}, {result.best[2]}, {result.best[3]} resulting in a {result.best[4].toFixed(2)}% increase over base damage.
@@ -414,7 +414,7 @@ const FinalResult = ({ result, other }) => {
         return (
             <div>
                 <div>
-                    Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1]}, Average Damage Increase From Critical Hits = {result.base[2]}. Total damage mod = {result.base[3]}
+                    Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
                 </div>
                 <div>
                     The best combination is {result.best[0]}, {result.best[1]}, {result.best[2]} resulting in a {result.best[3].toFixed(2)}% increase over base damage.
@@ -434,7 +434,7 @@ const FinalResult = ({ result, other }) => {
         return (
         <div>
             <div>
-                Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1]}, Average Damage Increase From Critical Hits = {result.base[2]}. Total damage mod = {result.base[3]}
+                Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
             </div>
             <div>
                 The best combination is {result.best[0]} with {result.best[1]} resulting in a {result.best[2].toFixed(2)}% increase over base damage.
