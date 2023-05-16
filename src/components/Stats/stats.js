@@ -26,7 +26,7 @@ export const plus13 = [
     {aux1: 'White Shell', aux2: 'Admiralty Fire Control Table', fp: 67 + 46, acc: 65 + 18, crate: 0, cdmg: 25},  
     {aux1: 'Black Shell', aux2: 'Yellow Shell', fp: 142, acc: 23, crate: 8, cdmg: 30},          
     {aux1: 'Yellow Shell', aux2: 'High Performance Fire Control Radar', fp: 57 + 36, acc: 45 + 23, crate: 0, cdmg: 30},  
-    {aux1: 'Yellow Shell', aux2: 'Admiralty Fire Control Table', fp: 57 + 85, acc: 65 + 23, crate:0, cdmg: 0}   
+    {aux1: 'Yellow Shell', aux2: 'Admiralty Fire Control Table', fp: 57 + 46, acc: 65 + 23, crate:0, cdmg: 30}   
 ]
 
 export const augs = [

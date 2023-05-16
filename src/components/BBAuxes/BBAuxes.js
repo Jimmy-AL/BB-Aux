@@ -25,7 +25,8 @@ const Form = () => {
     const fpMod = equipTotal => ((100 + (firepower.total + equipTotal) * ((100 + firepower.buffs) / 100)) / 100);
     const hitRate = (equipTotal) => {
         var acc = (accuracy.total + equipTotal) * (100 + accuracy.buffs) / 100;
-        return Math.min(1, (0.1 + acc / (acc + enemyStats.evasion + 2) + (luck.total - enemyStats.luck + enemyStats.lvldiff) / 1000 + accuracy.hitBuff / 100));
+
+        return Math.min(1, (0.1 + acc / (acc + enemyStats.evasion + 2) + (luck.total - enemyStats.luck - enemyStats.lvldiff) / 1000 + accuracy.hitBuff / 100));
     }
     const critBit = (equipAcc, critRate, critDmg) => {
         var acc = (accuracy.total + equipAcc) * (100 + accuracy.buffs) / 100;
@@ -57,6 +58,7 @@ const Form = () => {
         }
         return true;
     }
+
     const finalCalcs = () => {
         var auxes = {};
         var calcs = {};
@@ -91,7 +93,10 @@ const Form = () => {
                     })
                 }
                 else {
-                    calcs[fpMod(aux.fp) * hitRate(aux.acc) * critBit(aux.acc, aux.crate, aux.cdmg)] = {aux1: aux.aux1, aux2: aux.aux2}
+                    calcs[fpMod(aux.fp) * hitRate(aux.acc) * critBit(aux.acc, aux.crate, aux.cdmg)] = {
+                        aux1: aux.aux1,
+                        aux2: aux.aux2, 
+                    }
                 }
             }
         })
@@ -154,7 +159,6 @@ const Form = () => {
                 data[key] = 0;
             }
         });
-        console.log(data)
         setFinal({...final, result: 0, calc: 0})
         setFirepower({
             base: data.fpBase, 
@@ -434,7 +438,7 @@ const FinalResult = ({ result, other }) => {
         return (
         <div>
             <div>
-                Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
+                Base mods: FP = {result.base[0]}, Hit Rate = {(result.base[1] * 100).toFixed(2)}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
             </div>
             <div>
                 The best combination is {result.best[0]} with {result.best[1]} resulting in a {result.best[2].toFixed(2)}% increase over base damage.
