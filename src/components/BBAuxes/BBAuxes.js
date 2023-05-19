@@ -47,7 +47,7 @@ const Form = () => {
             }
         }
         if (other.forceFCR) {
-            if (aux.aux2 !== 'High Performance Fire Control Radar' || aux.aux2 === 'Admiralty Fire Control Table') {
+            if (aux.aux2 !== 'High Performance Fire Control Radar' || aux.aux2 !== 'Admiralty Fire Control Table') {
                 return false;
             }
         }
