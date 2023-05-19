@@ -47,7 +47,8 @@ const Form = () => {
             }
         }
         if (other.forceFCR) {
-            if (aux.aux2 !== 'High Performance Fire Control Radar' || aux.aux2 !== 'Admiralty Fire Control Table') {
+            if (aux.aux2 !== 'High Performance Fire Control Radar' && aux.aux2 !== 'Admiralty Fire Control Table') {
+                console.log(aux.aux2)
                 return false;
             }
         }
@@ -390,6 +391,7 @@ const Form = () => {
 }
 
 const FinalResult = ({ result, other }) => {
+    console.log(result)
     if (other.onlyShells && (other.admiralty || other.forceFCR)) {
         return <div>Please use your brain.</div>
     }
