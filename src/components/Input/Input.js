@@ -7,7 +7,7 @@ const Input = ({ title, label, type, register, valueAsNumber }) => {
             type={type}
             className='text-black border-solid border border-black rounded'
             defaultValue=''
-            {...register(label, { valueAsNumber,  })}
+            {...register(label, { valueAsNumber,  min: -100, max: 10000})}
             />
         </div>
     );
@@ -22,7 +22,7 @@ export const DecimalInput = ({ title, label, type, register, valueAsNumber }) =>
             className='text-black border-solid border border-black rounded'
             step="0.01"
             defaultValue=''
-            {...register(label, { valueAsNumber,  })}
+            {...register(label, { valueAsNumber, min: -100, max: 10000})}
             />
         </div>
     );
