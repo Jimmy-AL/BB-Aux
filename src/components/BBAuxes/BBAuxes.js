@@ -211,13 +211,109 @@ const Form = () => {
 
 
 
-    return (<>
-    <h1> What auxes should I be using on my battleship?</h1>
+    return (<div className='text-neutral-100'>
+    <div id="h1-container" className='container flex justify-start my-10'>
+        <h1 id="main-header" className="text-6xl font-bold outline-text"> What auxes should I be using on my battleship?</h1>
+    </div>
     <form onSubmit={handleSubmit(onSubmit)}>
+        
+        <div className='container flex justify-start my-10'>
+            <h2 className='outline-text'>Attacker Stats</h2>
+        </div>
+        <div className='container flex justify-start my-5'>
+            <h3>Firepower</h3>
+        </div>
+        <div className='container grid grid-cols-8 justify-start'>
+            <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber />
+            <Input title="Guns" type="number" register={register} label="fpGuns" valueAsNumber />
+            <Input title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber />
+            <Input title="Cats" type="number" register={register} label="fpCats" valueAsNumber />
+            <Tooltip text="Example: For a 30% FP buff, enter 30.">
+                <DecimalInput title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber />
+            </Tooltip>
+        </div>
+        <div className='container flex justify-start my-5'>
+            <h3>Accuracy</h3>
+        </div>
+        <div className='container grid grid-cols-8 justify-start'>
+            <Input title="Base" type="number" register={register} label="accBase" valueAsNumber />
+            <Input title="Equips" type="number" register={register} label="accEquips" valueAsNumber />
+            <Input title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber />
+            <Input title="Cats" type="number" register={register} label="accCats" valueAsNumber />
+            <Tooltip text="For accuracy/hit STAT buffs. Example: For a 30% ACC buff, enter 30.">
+                <DecimalInput title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber />
+            </Tooltip>
+            <Tooltip text="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10.">
+                <DecimalInput title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber />
+            </Tooltip>
+        </div>
+        <div className='container flex justify-start my-5'>
+            <h3>Luck</h3>
+        </div>
+        <div className='container grid grid-cols-8 justify-start'>
+            <Input title="Base" type="number" register={register} label="lckBase" valueAsNumber />
+            <Input title="Cats" type="number" register={register} label="lckCats" valueAsNumber />
+        </div>
+        <div className='container flex justify-start my-5'>
+            <h3>Critical Hit Buffs</h3>
+        </div>
+        <div className='container grid grid-cols-8 justify-start'>
+            <Tooltip text="For critical rate buffs from skills/cats and NOT auxiliaries. For a 6% crit rate bonus enter 6.">
+                <Input title="Rate" type="number" register={register} label="critRate" valueAsNumber />
+            </Tooltip>
+            <Tooltip text="For critical damage buffs from skills/cats and NOT auxiliaries. For a 30% crit damage bonus enter 30.">
+                <Input title="Damage" type="number" register={register} label="critDmg" valueAsNumber />
+            </Tooltip>
+        </div>
+        <div className='container flex justify-start mt-10 mb-5 outline-text'>
+            <h2>Enemy Stats</h2>
+        </div>
+        <div className='container grid grid-cols-8 justify-start'>
+            <Input title="Evasion" type="number" register={register} label="enemyEva" valueAsNumber />
+            <Input title="Luck" type="number" register={register} label="enemyLck" valueAsNumber />
+            <Tooltip text="Difference between attacker level and the enemy's. Example: Your ship is level 125 and the enemy is level 130. Enter -5.">
+                <Input title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber />
+            </Tooltip>
+            
+        </div>
+        <div className='container flex justify-start my-10 mb-5 outline-text'>
+            <h2>
+                Special Considerations
+            </h2>
+        </div>
+        <div className='container flex justify-start mb-10'>
+            <Tooltip text="Check to take augments into consideration. For unique augments like Hood's, leave this unchecked and input the stats into the attacker stats section.">
+                <Checkbox title= "Augments" register={register} label="augs" />
+            </Tooltip>
+            <Tooltip text="Check to take STAAG/134mm FP AA into consideration.">
+                <Checkbox title= "AA" register={register} label="aa" /> 
+            </Tooltip>
+            <Tooltip text="Check if HMS ship to take Yellow Shell into consideration">
+                <Checkbox title= "HMS" register={register} label="hms" />
+            </Tooltip>
+            <Tooltip text="Check to take +13 auxes only into consideration.">
+                <Checkbox title= "+13" register={register} label="thirteen" />
+            </Tooltip>
+            <Tooltip text="Check to remove the radars from consideration if the decreased load time is not desirable.">
+                <Checkbox title= "Shells only" register={register} label="onlyShells" />
+            </Tooltip>
+            <Tooltip text="Check to only consider radar set ups if decreased load time is needed.">
+                <Checkbox title= "Force HPFCR" register={register} label="forceFCR" />
+            </Tooltip>
+            <Tooltip text="Check to take the rainbow FCR into consideration. Only limited to 1 currently and will be clog up most set ups if enemy has high enough evasion.">
+                <Checkbox title= "Admiralty" register={register} label="admiralty" />
+            </Tooltip>
+            
+        </div>
         <div>
-            <button type="submit">Evaluate</button>
+            
+        </div>
+        <div id='btn-container' class="container flex text-2xl text-black justify-start space-x-20 mb-10">
+            <button id="evaluate" type="submit" className='shadow-2xl shadow-indigo-900  py-1 px-2  border border-black rounded-md bg-neutral-100'>Evaluate</button>
             <input
+                id="reset"
                 type="button"
+                className='shadow-2xl shadow-indigo-900  py-1 px-2 border-solid border border-black rounded-md bg-neutral-100 hover:cursor-pointer'
                 onClick={() =>
                     reset(
                         {
@@ -255,152 +351,196 @@ const Form = () => {
             />
         </div>
         { final.result > 0
-            ? <FinalResult result={result} other={other}/>
-            : <></>
+            ? <>
+                <Result result={result} other={other}/>
+                {/*<FinalResult result={result} other={other}/>*/}
+            </>
+            : <div className="p-80"></div>
         }
-        <div>
-            <h2>Attacker Stats</h2>
-        </div>
-        <div>
-            <h3>Firepower</h3>
-        </div>
-        <div>
-            <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber />
-            <Input title="Guns" type="number" register={register} label="fpGuns" valueAsNumber />
-            <Input title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber />
-            <Input title="Cats" type="number" register={register} label="fpCats" valueAsNumber />
-            <Tooltip text="Example: For a 30% FP buff, enter 30.">
-                <DecimalInput title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber />
-            </Tooltip>
-        </div>
-        <div>
-            <h3>Accuracy</h3>
-        </div>
-        <div>
-            <Input title="Base" type="number" register={register} label="accBase" valueAsNumber />
-            <Input title="Equips" type="number" register={register} label="accEquips" valueAsNumber />
-            <Input title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber />
-            <Input title="Cats" type="number" register={register} label="accCats" valueAsNumber />
-            <Tooltip text="For accuracy/hit STAT buffs. Example: For a 30% ACC buff, enter 30.">
-                <DecimalInput title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber />
-            </Tooltip>
-            <Tooltip text="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10.">
-                <DecimalInput title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber />
-            </Tooltip>
-        </div>
-        <div>
-            <h3>Luck</h3>
-        </div>
-        <div>
-            <Input title="Base" type="number" register={register} label="lckBase" valueAsNumber />
-            <Input title="Cats" type="number" register={register} label="lckCats" valueAsNumber />
-        </div>
-        <div>
-            <h3>Critical Hit Buffs</h3>
-        </div>
-        <div>
-            <Tooltip text="For critical rate buffs from skills/cats and NOT auxiliaries. For a 6% crit rate bonus enter 6.">
-                <Input title="Rate" type="number" register={register} label="critRate" valueAsNumber />
-            </Tooltip>
-            <Tooltip text="For critical damage buffs from skills/cats and NOT auxiliaries. For a 30% crit damage bonus enter 30.">
-                <Input title="Damage" type="number" register={register} label="critDmg" valueAsNumber />
-            </Tooltip>
-        </div>
-        <div>
-            <h2>Enemy Stats</h2>
-        </div>
-        <div>
-            <Input title="Evasion" type="number" register={register} label="enemyEva" valueAsNumber />
-            <Input title="Luck" type="number" register={register} label="enemyLck" valueAsNumber />
-            <Tooltip text="Difference between attacker level and the enemy's. Example: Your ship is level 125 and the enemy is level 130. Enter -5.">
-                <Input title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber />
-            </Tooltip>
-            
-        </div>
-        <div>
-            <h2>
-                Special Considerations
-            </h2>
-        </div>
-        <div>
-            <Tooltip text="Check to take augments into consideration. For unique augments like Hood's, leave this unchecked and input the stats into the attacker stats section.">
-                <Checkbox title= "Augments" register={register} label="augs" />
-            </Tooltip>
-            <Tooltip text="Check to take STAAG/134mm FP AA into consideration.">
-                <Checkbox title= "AA" register={register} label="aa" /> 
-            </Tooltip>
-            <Tooltip text="Check if HMS ship to take Yellow Shell into consideration">
-                <Checkbox title= "HMS" register={register} label="hms" />
-            </Tooltip>
-            <Tooltip text="Check to take +13 auxes only into consideration.">
-                <Checkbox title= "+13" register={register} label="thirteen" />
-            </Tooltip>
-            <Tooltip text="Check to remove the radars from consideration if the decreased load time is not desirable.">
-                <Checkbox title= "Shells only" register={register} label="onlyShells" />
-            </Tooltip>
-            <Tooltip text="Check to only consider radar set ups if decreased load time is needed.">
-                <Checkbox title= "Force HPFCR" register={register} label="forceFCR" />
-            </Tooltip>
-            <Tooltip text="Check to take the rainbow FCR into consideration. Only limited to 1 currently and will be clog up most set ups if enemy has high enough evasion.">
-                <Checkbox title= "Admiralty" register={register} label="admiralty" />
-            </Tooltip>
-            
-        </div>
-        {/*<div>
-            <button type="submit">Evaluate</button>
-            <input
-                type="button"
-                onClick={() =>
-                    reset(
-                        {
-                            accBase: '',
-                            accEquips: '',
-                            accBuffs: '',
-                            accCats: '',
-                            accHitRateBuff: '',
-                            accTech: '',
-                            critDmg: '',
-                            critRate: '',
-                            enemyEva: '',
-                            enemyLck: '',
-                            enemyLvlDiff: '',
-                            fpBase: '',
-                            fpBuffs: '',
-                            fpCats: '',
-                            fpGuns: '',
-                            fpTech: '',
-                            lckBase: '',
-                            lckCats: '',
-                            augs: false,
-                            aa: false,
-                            hms: false,
-                            thirteen: false,
-                            onlyShells: false,
-                            forceFCR: false, 
-                            admiralty: false,
-                        },
-                        setEvaluate(0),
-                        setFinal({calc: 0, result: 0})
-                    )
-                }
-                value="Reset"
-            />
-        </div>*/}
     </form>
-    </>)
+    <footer className='p-20'/>
+    </div>)
 }
 
-const FinalResult = ({ result, other }) => {
-    console.log(result)
+
+
+const Result = ({ result, other }) => {
+    const images = {
+        'White Shell': 'https://azurlane.netojuu.com/images/4/43/600.png',
+        'Black Shell': 'https://azurlane.netojuu.com/images/thumb/8/8a/620.png/128px-620.png',
+        'High Performance Fire Control Radar': 'https://azurlane.netojuu.com/images/3/3e/1260.png',
+        'Admiralty Fire Control Table': 'https://azurlane.netojuu.com/images/c/c4/3580.png',
+        'Yellow Shell': 'https://azurlane.netojuu.com/images/b/bf/1060.png',
+        'Bowgun': 'https://azurlane.netojuu.com/images/9/90/1060200.png',
+        'Officer\'s sword': 'https://azurlane.netojuu.com/images/7/77/1060100.png',
+        'FP AA': 'https://azurlane.netojuu.com/images/thumb/b/bf/21500.png/128px-21500.png',
+        'STAAG': 'https://azurlane.netojuu.com/images/1/18/26600.png',
+    }
+    //  conditional returns
+    var num = 2;
+    if (other.aug && other.aa) {
+        num = 4;
+    }
+    else if (other.aug || other.aa) {
+        num = 3;
+    }
+
+    // only black shell and white shell
     if (other.onlyShells && (other.admiralty || other.forceFCR)) {
-        return <div>Please use your brain.</div>
+        return <div>Placeholder. Give error message if user tries to check only shells as well as force radars.</div>
+    }
+
+    if (!other.augs && !other.aa && !other.hms && other.onlyShells) {
+        return <div className='container grid grid-cols-10 grid-rows-3 gap-10 place-items-center mb-10'>
+            <div className='container flex justify-start text-3xl font-bold'>
+                BEST:
+            </div>
+            <div className='ssr'>
+                <img alt='aux' className='object-scale-down h-30 w-30' src={images['Black Shell']}/>
+            </div>
+            <div className='ssr'>
+                <img alt='aux' className='object-scale-down h-30 w-30' src={images['White Shell']}/>
+            </div>
+        </div>
+    }
+
+
+    return <div className='container grid grid-cols-10 grid-rows-3 gap-10 place-items-center mb-10'>
+        <div className='container flex justify-start text-3xl font-bold'>
+            BEST:
+        </div>
+        <div className='ssr'>
+            <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[0]]}/>
+        </div>
+
+        {result.best[1] === 'Admiralty Fire Control Table'
+            ?<>
+                <div className='ur'>
+                    <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[1]]}/>
+                </div>
+            </>
+            :<>
+                <div className='ssr'>
+                    <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[1]]}/>
+                </div>
+            </>
+        }
+
+        {other.augs && other.aa
+            ?<>
+            <div className='ssr'>
+                <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[3]]}/>
+            </div>
+            <div className='sr'>
+                <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[2]]}/>
+            </div>
+            </>
+            : other.augs || other.aa
+                ? other.augs
+                    ? <div className='sr'>
+                        <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[2]]}/>
+                    </div>
+                    : <div className='ssr'>
+                        <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[2]]}/>
+                    </div>
+                :<></>
+        }
+
+        <div className='row-start-2 container flex justify-start text-3xl font-bold'>
+            SECOND:
+        </div>
+        <div className='ssr row-start-2'>
+            <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[0]]}/>
+        </div>
+
+        {result.second[1] === 'Admiralty Fire Control Table'
+            ? <>
+                <div className='ur row-start-2'>
+                    <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[1]]}/>
+                </div>
+            </>
+            : <>
+                <div className='ssr row-start-2'>
+                    <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[1]]}/>
+                </div>
+            </>}
+
+        {other.augs && other.aa
+        ?<>
+        <div className='ssr row-start-2'>
+            <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[3]]}/>
+        </div>
+        <div className='sr row-start-2'>
+            <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[2]]}/>
+        </div>
+        </>
+        : other.augs || other.aa
+            ? other.augs
+                ? <div className='sr row-start-2'>
+                    <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[2]]}/>
+                </div>
+                : <div className='ssr row-start-2'>
+                    <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[2]]}/>
+                </div>
+            :<></>
+        }
+
+        {result.third[0]
+            ?<>
+                <div className='row-start-3 container flex justify-start text-3xl font-bold'>
+                    THIRD:
+                </div>
+                <div className='ssr row-start-3'>
+                    <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[0]]}/>
+                </div>
+                {result.third[1] === 'Admiralty Fire Control Table'
+                    ? <>
+                        <div className='ur row-start-3'>
+                            <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[1]]}/>
+                        </div>
+                    </>
+                    : <>
+                        <div className='ssr row-start-3'>
+                            <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[1]]}/>
+                        </div>
+                    </>}
+                {other.augs && other.aa
+                    ?<>
+                    <div className='ssr row-start-3'>
+                        <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[3]]}/>
+                    </div>
+                    <div className='sr row-start-3'>
+                        <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[2]]}/>
+                    </div>
+                    </>
+                    : other.augs || other.aa
+                        ? other.augs
+                            ? <div className='sr row-start-3'>
+                                <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[2]]}/>
+                            </div>
+                            : <div className='ssr row-start-3'>
+                                <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[2]]}/>
+                            </div>
+                        :<></>
+                }
+            </>
+            :<></>}
+    </div>
+}
+
+
+
+
+const FinalResult = ({ result, other }) => {
+    if (other.onlyShells && (other.admiralty || other.forceFCR)) {
+        return <div className='container flex justify-start'>Please use your brain.</div>
     }
     if (!other.augs && !other.aa && !other.hms && other.onlyShells) {
-        return <div>Well there's only 1 combination...</div>
+        return <div className='container flex justify-start'>Well there's only 1 combination...</div>
     }
     if (other.augs && other.aa) {
         return(
-            <div>
+            <div className='container flex justify-start'>
                 <div>
                     Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
                 </div>
@@ -418,7 +558,7 @@ const FinalResult = ({ result, other }) => {
     }
     else if (other.augs || other.aa) {
         return (
-            <div>
+            <div className='container flex justify-start'>
                 <div>
                     Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
                 </div>
@@ -438,7 +578,7 @@ const FinalResult = ({ result, other }) => {
     }
     else {
         return (
-        <div>
+        <div className='container flex justify-start'>
             <div>
                 Base mods: FP = {result.base[0]}, Hit Rate = {(result.base[1] * 100).toFixed(2)}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
             </div>
