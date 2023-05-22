@@ -4,7 +4,6 @@ import Checkbox from '../Input/Checkbox';
 import Input from '../Input/Input';
 import { DecimalInput } from '../Input/Input';
 import { plus10, plus13, augs, aa } from '../Stats/stats'
-import Tooltip from '../Tooltip/Tooltip';
 
 const Form = () => {
     const { register, handleSubmit, reset, formState: { errors }} = useForm();
@@ -224,56 +223,44 @@ const Form = () => {
             <h3>Firepower</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber errors={errors} />
-            <Input errors={errors} title="Guns" type="number" register={register} label="fpGuns" valueAsNumber />
-            <Input errors={errors} title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber />
+            <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber errors={errors} hint={false}/>
+            <Input errors={errors} title="Guns" type="number" register={register} label="fpGuns" valueAsNumber hint={false}/>
+            <Input errors={errors} title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber hint={false}/>
             <Input errors={errors} title="Cats" type="number" register={register} label="fpCats" valueAsNumber />
-            <Tooltip text="Example: For a 30% FP buff, enter 30.">
-                <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber />
-            </Tooltip>
+            <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber hint={true} message="Example: For a 30% FP buff, enter 30."/>
         </div>
         <div className='container flex justify-start my-5'>
             <h3>Accuracy</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input errors={errors} title="Base" type="number" register={register} label="accBase" valueAsNumber />
-            <Input errors={errors} title="Equips" type="number" register={register} label="accEquips" valueAsNumber />
-            <Input errors={errors} title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber />
-            <Input errors={errors} title="Cats" type="number" register={register} label="accCats" valueAsNumber />
-            <Tooltip text="For accuracy/hit STAT buffs. Example: For a 30% ACC buff, enter 30.">
-                <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber />
-            </Tooltip>
-            <Tooltip text="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10.">
-                <DecimalInput errors={errors} title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber />
-            </Tooltip>
+            <Input errors={errors} title="Base" type="number" register={register} label="accBase" valueAsNumber hint={false}/>
+            <Input errors={errors} title="Equips" type="number" register={register} label="accEquips" valueAsNumber hint={false}/>
+            <Input errors={errors} title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber hint={false}/>
+            <Input errors={errors} title="Cats" type="number" register={register} label="accCats" valueAsNumber hint={false}/>
+            <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber hint={true} message="For accuracy/hit STAT buffs. Example: For a 30% ACC buff, enter 30."/>
+            <DecimalInput errors={errors} title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber hint={true} message="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10."/>
         </div>
         <div className='container flex justify-start my-5'>
             <h3>Luck</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input errors={errors} title="Base" type="number" register={register} label="lckBase" valueAsNumber />
-            <Input errors={errors} title="Cats" type="number" register={register} label="lckCats" valueAsNumber />
+            <Input errors={errors} title="Base" type="number" register={register} label="lckBase" valueAsNumber hint={false}/>
+            <Input errors={errors} title="Cats" type="number" register={register} label="lckCats" valueAsNumber hint={false}/>
         </div>
         <div className='container flex justify-start my-5'>
             <h3>Critical Hit Buffs</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Tooltip text="For critical rate buffs from skills/cats and NOT auxiliaries. For a 6% crit rate bonus enter 6.">
-                <Input errors={errors} title="Rate" type="number" register={register} label="critRate" valueAsNumber />
-            </Tooltip>
-            <Tooltip text="For critical damage buffs from skills/cats and NOT auxiliaries. For a 30% crit damage bonus enter 30.">
-                <Input errors={errors} title="Damage" type="number" register={register} label="critDmg" valueAsNumber />
-            </Tooltip>
+            <Input errors={errors} title="Rate" type="number" register={register} label="critRate" valueAsNumber hint={true} message="For critical rate buffs from skills/cats and NOT auxiliaries. For a 6% crit rate bonus enter 6."/>
+            <Input errors={errors} title="Damage" type="number" register={register} label="critDmg" valueAsNumber hint={true} message="For critical damage buffs from skills/cats and NOT auxiliaries. For a 30% crit damage bonus enter 30."/>
         </div>
         <div className='container flex justify-start mt-10 mb-5 outline-text'>
             <h2>Enemy Stats</h2>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input errors={errors} title="Evasion" type="number" register={register} label="enemyEva" valueAsNumber />
-            <Input errors={errors} title="Luck" type="number" register={register} label="enemyLck" valueAsNumber />
-            <Tooltip text="Difference between attacker level and the enemy's. Example: Your ship is level 125 and the enemy is level 130. Enter -5.">
-                <Input errors={errors} title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber />
-            </Tooltip>
+            <Input errors={errors} title="Evasion" type="number" register={register} label="enemyEva" valueAsNumber hint={false}/>
+            <Input errors={errors} title="Luck" type="number" register={register} label="enemyLck" valueAsNumber hint={false}/>
+            <Input errors={errors} title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber hint={true} message="Difference between attacker level and the enemy's. Example: Your ship is level 125 and the enemy is level 130. Enter -5."/>
             
         </div>
         <div className='container flex justify-start my-10 mb-5 outline-text'>
@@ -281,29 +268,14 @@ const Form = () => {
                 Special Considerations
             </h2>
         </div>
-        <div className='container flex justify-start mb-10'>
-            <Tooltip text="Check to take augments into consideration. For unique augments like Hood's, leave this unchecked and input the stats into the attacker stats section.">
-                <Checkbox title= "Augments" register={register} label="augs" />
-            </Tooltip>
-            <Tooltip text="Check to take STAAG/134mm FP AA into consideration.">
-                <Checkbox title= "AA" register={register} label="aa" /> 
-            </Tooltip>
-            <Tooltip text="Check if HMS ship to take Yellow Shell into consideration">
-                <Checkbox title= "HMS" register={register} label="hms" />
-            </Tooltip>
-            <Tooltip text="Check to take +13 auxes only into consideration.">
-                <Checkbox title= "+13" register={register} label="thirteen" />
-            </Tooltip>
-            <Tooltip text="Check to remove the radars from consideration if the decreased load time is not desirable.">
-                <Checkbox title= "Shells only" register={register} label="onlyShells" />
-            </Tooltip>
-            <Tooltip text="Check to only consider radar set ups if decreased load time is needed.">
-                <Checkbox title= "Force HPFCR" register={register} label="forceFCR" />
-            </Tooltip>
-            <Tooltip text="Check to take the rainbow FCR into consideration. Only limited to 1 currently and will be clog up most set ups if enemy has high enough evasion.">
-                <Checkbox title= "Admiralty" register={register} label="admiralty" />
-            </Tooltip>
-            
+        <div className='container grid grid-cols-10 justify-start mb-10'>
+                <Checkbox title= "Augments" register={register} label="augs" message="Check to take augments into consideration. For unique augments like Hood's, leave this unchecked and input the stats into the attacker stats section."/>
+                <Checkbox title= "AA" register={register} label="aa" message="Check to take STAAG/134mm FP AA into consideration." /> 
+                <Checkbox title= "HMS" register={register} label="hms" message="Check if HMS ship to take Yellow Shell into consideration." />
+                <Checkbox title= "+13" register={register} label="thirteen" message="Check to take +13 auxes only into consideration." />
+                <Checkbox title= "Shells only" register={register} label="onlyShells" message="Check to remove the radars from consideration if the decreased load time is not desirable."/>
+                <Checkbox title= "Force HPFCR" register={register} label="forceFCR" message="Check to only consider radar set ups if decreased load time is needed." />
+                <Checkbox title= "Admiralty" register={register} label="admiralty" message="Check to take the rainbow FCR into consideration. Only limited to 1 currently and will be clog up most set ups if enemy has high enough evasion."/>
         </div>
         <div>
             

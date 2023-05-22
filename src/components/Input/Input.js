@@ -1,8 +1,21 @@
+import {QuestionMarkCircleIcon} from '@heroicons/react/20/solid'
 
-const Input = ({ title, label, type, register, valueAsNumber, errors }) => {
+const Input = ({ title, label, type, register, valueAsNumber, errors, hint, message }) => {
     return (
-        <div className='container flex flex-col pr-10'>
-            <label>{title}</label>
+        <div className='container relative flex flex-col pr-10'>
+            <div className='container flex relative mb-2'>
+                <label className='mr-2'>{title}</label>
+                {hint
+                    ?<div class="group relative inline-block">
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1 opacity-0 group-hover:opacity-100 transition duration-300 bg-slate-700 rounded p-2">
+                            {message}
+                        </div>
+                        <QuestionMarkCircleIcon className="h-5 w-5 relative bottom-0 right-0 text-black"/>
+                    </div>
+                    //<QuestionMarkCircleIcon className="h-5 w-5 absolute bottom-0 right-0 text-black"/>
+                    : <></>}
+                
+            </div>
             <input
             type={type}
             className='text-black border-solid border border-black rounded'
@@ -14,10 +27,20 @@ const Input = ({ title, label, type, register, valueAsNumber, errors }) => {
     );
 }
 
-export const DecimalInput = ({ title, label, type, register, valueAsNumber, errors }) => {
+export const DecimalInput = ({ title, label, type, register, valueAsNumber, errors, hint, message }) => {
     return (
         <div className='container flex flex-col pr-10'>
-            <label>{title}</label>
+            <div className='container flex relative mb-2'>
+                <label className='mr-2'>{title}</label>
+                {hint
+                    ? <div class="group relative inline-block">
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1 opacity-0 group-hover:opacity-100 transition duration-300 bg-slate-700 rounded p-2">
+                            {message}
+                        </div>
+                        <QuestionMarkCircleIcon className="h-5 w-5 relative bottom-0 right-0 text-black"/>
+                    </div>
+                    : <></>}
+            </div>
             <input
             type={type}
             className='text-black border-solid border border-black rounded'
