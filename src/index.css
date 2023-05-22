@@ -55,9 +55,13 @@ input[type="number"] {
 }
 
 .border-top {
-  border-top: 1px solid rgb(50, 57, 87)
+  border-top: 1px solid black
 }
 
 .mb-error {
   margin-bottom: 28rem;
+}
+
+footer {
+  background-color: #252F4A;
 }
