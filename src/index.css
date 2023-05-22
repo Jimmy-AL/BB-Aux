@@ -49,5 +49,7 @@ input[type="number"] {
   background: linear-gradient(120deg, #fbffca, #baffbf, #a7efff, #ffabff);
 }
 
-.result-grid {
+.error-message{
+  color: rgb(211, 85, 85);
+  font-weight: 700;
 }

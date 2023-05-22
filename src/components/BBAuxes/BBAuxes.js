@@ -224,55 +224,55 @@ const Form = () => {
             <h3>Firepower</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber />
-            <Input title="Guns" type="number" register={register} label="fpGuns" valueAsNumber />
-            <Input title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber />
-            <Input title="Cats" type="number" register={register} label="fpCats" valueAsNumber />
+            <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber errors={errors} />
+            <Input errors={errors} title="Guns" type="number" register={register} label="fpGuns" valueAsNumber />
+            <Input errors={errors} title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber />
+            <Input errors={errors} title="Cats" type="number" register={register} label="fpCats" valueAsNumber />
             <Tooltip text="Example: For a 30% FP buff, enter 30.">
-                <DecimalInput title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber />
+                <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber />
             </Tooltip>
         </div>
         <div className='container flex justify-start my-5'>
             <h3>Accuracy</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input title="Base" type="number" register={register} label="accBase" valueAsNumber />
-            <Input title="Equips" type="number" register={register} label="accEquips" valueAsNumber />
-            <Input title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber />
-            <Input title="Cats" type="number" register={register} label="accCats" valueAsNumber />
+            <Input errors={errors} title="Base" type="number" register={register} label="accBase" valueAsNumber />
+            <Input errors={errors} title="Equips" type="number" register={register} label="accEquips" valueAsNumber />
+            <Input errors={errors} title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber />
+            <Input errors={errors} title="Cats" type="number" register={register} label="accCats" valueAsNumber />
             <Tooltip text="For accuracy/hit STAT buffs. Example: For a 30% ACC buff, enter 30.">
-                <DecimalInput title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber />
+                <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber />
             </Tooltip>
             <Tooltip text="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10.">
-                <DecimalInput title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber />
+                <DecimalInput errors={errors} title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber />
             </Tooltip>
         </div>
         <div className='container flex justify-start my-5'>
             <h3>Luck</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input title="Base" type="number" register={register} label="lckBase" valueAsNumber />
-            <Input title="Cats" type="number" register={register} label="lckCats" valueAsNumber />
+            <Input errors={errors} title="Base" type="number" register={register} label="lckBase" valueAsNumber />
+            <Input errors={errors} title="Cats" type="number" register={register} label="lckCats" valueAsNumber />
         </div>
         <div className='container flex justify-start my-5'>
             <h3>Critical Hit Buffs</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
             <Tooltip text="For critical rate buffs from skills/cats and NOT auxiliaries. For a 6% crit rate bonus enter 6.">
-                <Input title="Rate" type="number" register={register} label="critRate" valueAsNumber />
+                <Input errors={errors} title="Rate" type="number" register={register} label="critRate" valueAsNumber />
             </Tooltip>
             <Tooltip text="For critical damage buffs from skills/cats and NOT auxiliaries. For a 30% crit damage bonus enter 30.">
-                <Input title="Damage" type="number" register={register} label="critDmg" valueAsNumber />
+                <Input errors={errors} title="Damage" type="number" register={register} label="critDmg" valueAsNumber />
             </Tooltip>
         </div>
         <div className='container flex justify-start mt-10 mb-5 outline-text'>
             <h2>Enemy Stats</h2>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
-            <Input title="Evasion" type="number" register={register} label="enemyEva" valueAsNumber />
-            <Input title="Luck" type="number" register={register} label="enemyLck" valueAsNumber />
+            <Input errors={errors} title="Evasion" type="number" register={register} label="enemyEva" valueAsNumber />
+            <Input errors={errors} title="Luck" type="number" register={register} label="enemyLck" valueAsNumber />
             <Tooltip text="Difference between attacker level and the enemy's. Example: Your ship is level 125 and the enemy is level 130. Enter -5.">
-                <Input title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber />
+                <Input errors={errors} title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber />
             </Tooltip>
             
         </div>
@@ -308,7 +308,7 @@ const Form = () => {
         <div>
             
         </div>
-        <div id='btn-container' class="container flex text-2xl text-black justify-start space-x-20 mb-10">
+        <div id='btn-container' className="container flex text-2xl text-black justify-start space-x-20 mb-10">
             <button id="evaluate" type="submit" className='shadow-2xl shadow-indigo-900  py-1 px-2  border border-black rounded-md bg-neutral-100'>Evaluate</button>
             <input
                 id="reset"
@@ -355,7 +355,7 @@ const Form = () => {
                 <Result result={result} other={other}/>
                 {/*<FinalResult result={result} other={other}/>*/}
             </>
-            : <div className="p-80"></div>
+            : <div className="p-56"></div>
         }
     </form>
     <footer className='p-20'/>
