@@ -369,7 +369,9 @@ const Result = ({ result, other }) => {
 
     // only black shell and white shell
     if (other.onlyShells && (other.admiralty || other.forceFCR)) {
-        return <div>Placeholder. Give error message if user tries to check only shells as well as force radars.</div>
+        return <div className='container flex mb-error justify-start content-start border'>
+                <div className='error-message'>Shells only cannot be selected with radars.</div>
+            </div>
     }
 
     if (!other.augs && !other.aa && !other.hms && other.onlyShells) {

@@ -57,3 +57,7 @@ input[type="number"] {
 .border-top {
   border-top: 1px solid rgb(50, 57, 87)
 }
+
+.mb-error {
+  margin-bottom: 28rem;
+}
