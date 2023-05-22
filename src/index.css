@@ -50,7 +50,7 @@ input[type="number"] {
 }
 
 .error-message{
-  color: rgb(211, 85, 85);
+  color: rgb(236, 166, 166);
   font-weight: 700;
 }
 
@@ -64,4 +64,8 @@ input[type="number"] {
 
 footer {
   background-color: #252F4A;
+}
+
+.increase-message {
+  color: #ee9;
 }

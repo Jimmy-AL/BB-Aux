@@ -324,10 +324,13 @@ const Form = () => {
         </div>
         { final.result > 0
             ? <>
+                <div className='container flex mb-5 text-lg error-message'>
+                    Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
+                </div>
                 <Result result={result} other={other}/>
                 {/*<FinalResult result={result} other={other}/>*/}
             </>
-            : <div className="p-56"></div>
+            : <div className="p-64"></div>
         }
     </form>
     <footer className='pt-10 pb-20 border-top'>
@@ -369,9 +372,9 @@ const Result = ({ result, other }) => {
 
     if (!other.augs && !other.aa && !other.hms && other.onlyShells) {
         return <div className='container grid grid-cols-10 grid-rows-3 gap-10 place-items-center mb-10'>
-            <div className='container flex justify-start text-3xl font-bold'>
+            <p className='container flex justify-start text-3xl font-bold'>
                 BEST:
-            </div>
+            </p>
             <div className='ssr'>
                 <img alt='aux' className='object-scale-down h-30 w-30' src={images['Black Shell']}/>
             </div>
@@ -383,8 +386,16 @@ const Result = ({ result, other }) => {
 
 
     return <div className='container grid grid-cols-10 grid-rows-3 gap-10 place-items-center mb-10'>
-        <div className='container flex justify-start text-3xl font-bold'>
-            BEST:
+        <div className='container flex flex-col justify-start '>
+            <p className='text-3xl font-bold'>BEST:</p>
+            <div className='increase-message'>
+                {other.augs && other.aa 
+                    ? <p>{result.best[4].toFixed(2)}% increase over base.</p> 
+                    : other.augs || other.aux
+                        ? <p>{result.best[3].toFixed(2)}% increase over base.</p>
+                        : <p>{result.best[2].toFixed(2)}% increase over base.</p>
+                }
+            </div>
         </div>
         <div className='ssr'>
             <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.best[0]]}/>
@@ -423,8 +434,16 @@ const Result = ({ result, other }) => {
                 :<></>
         }
 
-        <div className='row-start-2 container flex justify-start text-3xl font-bold'>
-            SECOND:
+        <div className='container flex flex-col justify-start row-start-2'>
+            <p className='text-3xl font-bold'>SECOND:</p>
+            <div className='increase-message'>
+                {other.augs && other.aa 
+                ? <p>{result.second[4].toFixed(2)}% increase over base.</p> 
+                : other.augs || other.aux
+                    ? <p>{result.second[3].toFixed(2)}% increase over base.</p>
+                    : <p>{result.second[2].toFixed(2)}% increase over base.</p>
+            }</div>
+            
         </div>
         <div className='ssr row-start-2'>
             <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.second[0]]}/>
@@ -464,8 +483,15 @@ const Result = ({ result, other }) => {
 
         {result.third[0]
             ?<>
-                <div className='row-start-3 container flex justify-start text-3xl font-bold'>
-                    THIRD:
+                <div className='container flex flex-col justify-start row-start-3'>
+                    <p className='text-3xl font-bold '>THIRD:</p>
+                    <div className='increase-message'>{other.augs && other.aa 
+                        ? <p>{result.third[4].toFixed(2)}% increase over base.</p> 
+                        : other.augs || other.aux
+                            ? <p>{result.third[3].toFixed(2)}% increase over base.</p>
+                            : <p>{result.third[2].toFixed(2)}% increase over base.</p>
+                    }</div>
+                    
                 </div>
                 <div className='ssr row-start-3'>
                     <img alt='aux' className='object-scale-down h-30 w-30' src={images[result.third[0]]}/>
