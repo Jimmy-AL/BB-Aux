@@ -237,7 +237,7 @@ const Form = () => {
             <Input errors={errors} title="Equips" type="number" register={register} label="accEquips" valueAsNumber hint={false}/>
             <Input errors={errors} title="Fleet Tech" type="number" register={register} label="accTech" valueAsNumber hint={false}/>
             <Input errors={errors} title="Cats" type="number" register={register} label="accCats" valueAsNumber hint={false}/>
-            <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber hint={true} message="For accuracy/hit STAT buffs. Example: For a 30% ACC buff, enter 30."/>
+            <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber hint={true} message="For accuracy/hit STAT buffs. &#10;Example: For a 30% ACC buff, enter 30."/>
             <DecimalInput errors={errors} title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber hint={true} message="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10."/>
         </div>
         <div className='container flex justify-start my-5'>
