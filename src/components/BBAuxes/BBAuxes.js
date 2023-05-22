@@ -216,20 +216,20 @@ const Form = () => {
     </div>
     <form onSubmit={handleSubmit(onSubmit)}>
         
-        <div className='container flex justify-start my-10'>
+        <div className='container flex justify-start my-10 '>
             <h2 className='outline-text'>Attacker Stats</h2>
         </div>
-        <div className='container flex justify-start my-5'>
+        <div className='container flex justify-start my-5 border-top'>
             <h3>Firepower</h3>
         </div>
-        <div className='container grid grid-cols-8 justify-start'>
+        <div className='container grid grid-cols-8 justify-start '>
             <Input title="Base" type="number" register={register} label="fpBase" valueAsNumber errors={errors} hint={false}/>
             <Input errors={errors} title="Guns" type="number" register={register} label="fpGuns" valueAsNumber hint={false}/>
             <Input errors={errors} title="Fleet Tech" type="number" register={register} label="fpTech" valueAsNumber hint={false}/>
             <Input errors={errors} title="Cats" type="number" register={register} label="fpCats" valueAsNumber />
             <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="fpBuffs" valueAsNumber hint={true} message="Example: For a 30% FP buff, enter 30."/>
         </div>
-        <div className='container flex justify-start my-5'>
+        <div className='container flex justify-start my-5 border-top'>
             <h3>Accuracy</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
@@ -240,21 +240,21 @@ const Form = () => {
             <DecimalInput errors={errors} title="Buffs" type="number" register={register} label="accBuffs" valueAsNumber hint={true} message="For accuracy/hit STAT buffs. &#10;Example: For a 30% ACC buff, enter 30."/>
             <DecimalInput errors={errors} title="Hit Rate Buffs" type="number" register={register} label="accHitRateBuff" valueAsNumber hint={true} message="For hit rate buffs like Warspite Retrofit's. For a 10% hit rate buff enter 10."/>
         </div>
-        <div className='container flex justify-start my-5'>
+        <div className='container flex justify-start my-5 border-top'>
             <h3>Luck</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
             <Input errors={errors} title="Base" type="number" register={register} label="lckBase" valueAsNumber hint={false}/>
             <Input errors={errors} title="Cats" type="number" register={register} label="lckCats" valueAsNumber hint={false}/>
         </div>
-        <div className='container flex justify-start my-5'>
+        <div className='container flex justify-start my-5 border-top'>
             <h3>Critical Hit Buffs</h3>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
             <Input errors={errors} title="Rate" type="number" register={register} label="critRate" valueAsNumber hint={true} message="For critical rate buffs from skills/cats and NOT auxiliaries. For a 6% crit rate bonus enter 6."/>
             <Input errors={errors} title="Damage" type="number" register={register} label="critDmg" valueAsNumber hint={true} message="For critical damage buffs from skills/cats and NOT auxiliaries. For a 30% crit damage bonus enter 30."/>
         </div>
-        <div className='container flex justify-start mt-10 mb-5 outline-text'>
+        <div className='container flex justify-start mt-10 mb-5 outline-text border-top'>
             <h2>Enemy Stats</h2>
         </div>
         <div className='container grid grid-cols-8 justify-start'>
@@ -263,7 +263,7 @@ const Form = () => {
             <Input errors={errors} title="Level Difference" type="number" register={register} label="enemyLvlDiff" valueAsNumber hint={true} message="Difference between attacker level and the enemy's. Example: Your ship is level 125 and the enemy is level 130. Enter -5."/>
             
         </div>
-        <div className='container flex justify-start my-10 mb-5 outline-text'>
+        <div className='container flex justify-start my-10 mb-5 outline-text border-top'>
             <h2>
                 Special Considerations
             </h2>
