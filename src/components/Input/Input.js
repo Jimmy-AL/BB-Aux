@@ -44,7 +44,7 @@ export const DecimalInput = ({ title, label, type, register, valueAsNumber, erro
             <input
             type={type}
             className='text-blue-950 border-solid border border-black rounded'
-            step="0.01"
+            step="0.0001"
             defaultValue=''
             {...register(label, { valueAsNumber, min: {value: -300, message: 'Minimum value is -300.'}, max: {value: '10000', message: 'Maximum value is 10000.'}})}
             />
