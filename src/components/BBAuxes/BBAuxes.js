@@ -358,18 +358,11 @@ const Result = ({ result, other }) => {
         'FP AA': 'https://azurlane.netojuu.com/images/thumb/b/bf/21500.png/128px-21500.png',
         'STAAG': 'https://azurlane.netojuu.com/images/1/18/26600.png',
     }
-    //  conditional returns
-    var num = 2;
-    if (other.aug && other.aa) {
-        num = 4;
-    }
-    else if (other.aug || other.aa) {
-        num = 3;
-    }
+
 
     // only black shell and white shell
     if (other.onlyShells && (other.admiralty || other.forceFCR)) {
-        return <div className='container flex mb-error justify-start content-start border'>
+        return <div className='container flex mb-error justify-start content-start text-xl'>
                 <div className='error-message'>Shells only cannot be selected with radars.</div>
             </div>
     }
