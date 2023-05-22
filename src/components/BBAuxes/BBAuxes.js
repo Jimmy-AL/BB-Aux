@@ -275,7 +275,7 @@ const Form = () => {
                 <Checkbox title= "+13" register={register} label="thirteen" message="Check to take +13 auxes only into consideration." />
                 <Checkbox title= "Shells only" register={register} label="onlyShells" message="Check to remove the radars from consideration if the decreased load time is not desirable."/>
                 <Checkbox title= "Force HPFCR" register={register} label="forceFCR" message="Check to only consider radar set ups if decreased load time is needed." />
-                <Checkbox title= "Admiralty" register={register} label="admiralty" message="Check to take the rainbow FCR into consideration. Only limited to 1 currently and will be clog up most set ups if enemy has high enough evasion."/>
+                <Checkbox title= "Admiralty" register={register} label="admiralty" message="Check to take the Adminralty FCR into consideration."/>
         </div>
         <div>
             
