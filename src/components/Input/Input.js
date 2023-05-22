@@ -7,7 +7,7 @@ const Input = ({ title, label, type, register, valueAsNumber, errors, hint, mess
                 <label className='mr-2'>{title}</label>
                 {hint
                     ?<div class="group relative inline-block">
-                        <div class="absolute bottom-6 left-4 opacity-0 group-hover:opacity-100 transition duration-300 bg-slate-700 rounded p-2 w-96 pointer-events-none">
+                        <div class="absolute bottom-6 left-4 opacity-0 group-hover:opacity-100 transition duration-300 bg-opacity-95 bg-slate-700 rounded p-2 w-96 pointer-events-none">
                             {message}
                         </div>
                         <QuestionMarkCircleIcon className="h-5 w-5 relative inset-y-1 -left-1 text-black"/>
@@ -34,7 +34,7 @@ export const DecimalInput = ({ title, label, type, register, valueAsNumber, erro
                 <label className='mr-2'>{title}</label>
                 {hint
                     ? <div class="group relative inline-block">
-                        <div class="absolute bottom-6 left-4 opacity-0 group-hover:opacity-100 transition duration-300 bg-slate-700 rounded p-2 pointer-events-none w-96">
+                        <div class="absolute bottom-6 left-4 opacity-0 group-hover:opacity-100 transition duration-300 bg-opacity-95 bg-slate-700 rounded p-2 pointer-events-none w-96">
                             {message}
                         </div>
                         <QuestionMarkCircleIcon className="h-5 w-5 relative inset-y-1 -left-1 text-black"/>

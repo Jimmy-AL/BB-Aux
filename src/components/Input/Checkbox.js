@@ -12,7 +12,7 @@ const Checkbox = ({ title, label, register, message }) => {
                 {title}
             </label>
             <div class="group relative inline-block">
-                <div class="absolute bottom-6 left-4 opacity-0 group-hover:opacity-100 transition duration-300 bg-slate-700 rounded p-2 w-max pointer-events-none">
+                <div class="absolute bottom-6 left-4 opacity-0 group-hover:opacity-100 transition duration-300 bg-opacity-95 bg-slate-700 rounded p-2 w-max pointer-events-none">
                     {message}
                 </div>
                 <QuestionMarkCircleIcon className="h-5 w-5 relative inset-y-1 inset-x-1 text-black"/>
