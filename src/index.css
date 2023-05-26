@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +14,58 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.outline-text {
+  text-shadow: 1px 1px 0 #000;
+}
+
+h2 {
+  font-size: 2.25rem; /* 36px */
+  line-height: 2.5rem; /* 40px */
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem; /* 36px */
+  font-weight: 700;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+
+.sr {
+  background: #c4adff;
+}
+
+.ssr {
+  background: #ee9;
+}
+
+.ur {
+  background: linear-gradient(120deg, #fbffca, #baffbf, #a7efff, #ffabff);
+}
+
+.error-message{
+  color: rgb(236, 166, 166);
+  font-weight: 700;
+}
+
+.border-top {
+  border-top: 1px solid black
+}
+
+.mb-error {
+  margin-bottom: 28rem;
+}
+
+footer {
+  background-color: #252F4A;
+}
+
+.increase-message {
+  color: #ee9;
 }
