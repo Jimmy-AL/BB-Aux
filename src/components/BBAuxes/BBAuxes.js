@@ -32,7 +32,7 @@ const Form = () => {
         var acc = (accuracy.total + equipAcc) * (100 + accuracy.buffs) / 100;
         
         // critRate and critDmg are stats from auxes, crit.rate and crit.dmg are the crit rate and damage buffs from the ships inputted by user
-        var rate = 0.05 + acc / (acc + enemyStats.evasion + 2000) + (luck.total - enemyStats.luck + enemyStats.lvldiff) / 5000 + (critRate + crit.rate) / 100;
+        var rate = Math.min(1, 0.05 + acc / (acc + enemyStats.evasion + 2000) + (luck.total - enemyStats.luck + enemyStats.lvldiff) / 5000 + (critRate + crit.rate) / 100);
         return (1 - rate) + rate * ((150 + critDmg + crit.dmg) / 100);
     }
     const validCombo = (aux) => {
