@@ -391,9 +391,10 @@ const Result = ({ result, other }) => {
             <div className='increase-message'>
                 {other.augs && other.aa 
                     ? <p>{result.best[4].toFixed(2)}% increase over base.</p> 
-                    : other.augs || other.aux
+                    : other.augs || other.aa
                         ? <p>{result.best[3].toFixed(2)}% increase over base.</p>
-                        : <p>{result.best[2].toFixed(2)}% increase over base.</p>
+                        : <p>{result.best[2].toFixed(2)}% increase over base.
+                        {console.log(other.augs || other.aa)}</p>
                 }
             </div>
         </div>
@@ -439,7 +440,7 @@ const Result = ({ result, other }) => {
             <div className='increase-message'>
                 {other.augs && other.aa 
                 ? <p>{result.second[4].toFixed(2)}% increase over base.</p> 
-                : other.augs || other.aux
+                : other.augs || other.aa
                     ? <p>{result.second[3].toFixed(2)}% increase over base.</p>
                     : <p>{result.second[2].toFixed(2)}% increase over base.</p>
             }</div>
@@ -487,7 +488,7 @@ const Result = ({ result, other }) => {
                     <p className='text-3xl font-bold '>THIRD:</p>
                     <div className='increase-message'>{other.augs && other.aa 
                         ? <p>{result.third[4].toFixed(2)}% increase over base.</p> 
-                        : other.augs || other.aux
+                        : other.augs || other.aa
                             ? <p>{result.third[3].toFixed(2)}% increase over base.</p>
                             : <p>{result.third[2].toFixed(2)}% increase over base.</p>
                     }</div>
@@ -533,72 +534,4 @@ const Result = ({ result, other }) => {
 
 
 
-
-const FinalResult = ({ result, other }) => {
-    if (other.onlyShells && (other.admiralty || other.forceFCR)) {
-        return <div className='container flex justify-start'>Please use your brain.</div>
-    }
-    if (!other.augs && !other.aa && !other.hms && other.onlyShells) {
-        return <div className='container flex justify-start'>Well there's only 1 combination...</div>
-    }
-    if (other.augs && other.aa) {
-        return(
-            <div className='container flex justify-start'>
-                <div>
-                    Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
-                </div>
-                <div>
-                    The best combination is {result.best[0]}, {result.best[1]}, {result.best[2]}, {result.best[3]} resulting in a {result.best[4].toFixed(2)}% increase over base damage.
-                </div>
-                <div>
-                    The second best combination is {result.second[0]}, {result.second[1]}, {result.second[2]}, {result.second[3]} resulting in a {result.second[4].toFixed(2)}% increase over base damage.
-                </div>
-                <div>
-                    The third best combination is {result.third[0]}, {result.third[1]}, {result.third[2]}, {result.third[3]} resulting in a {result.third[4].toFixed(2)}% increase over base damage.
-                </div>
-            </div>
-        )
-    }
-    else if (other.augs || other.aa) {
-        return (
-            <div className='container flex justify-start'>
-                <div>
-                    Base mods: FP = {result.base[0]}, Hit Rate = {result.base[1].toFixed(4) * 100}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
-                </div>
-                <div>
-                    The best combination is {result.best[0]}, {result.best[1]}, {result.best[2]} resulting in a {result.best[3].toFixed(2)}% increase over base damage.
-                </div>
-                <div>
-                    The second best combination is {result.second[0]}, {result.second[1]}, {result.second[2]} resulting in a {result.second[3].toFixed(2)}% increase over base damage.
-                </div>
-                {result.third[0]
-                    ?<div>
-                        The third best combination is {result.third[0]}, {result.third[1]}, {result.third[2]} resulting in a {result.third[3].toFixed(2)}% increase over base damage.
-                    </div>
-                    :<></>}
-            </div>
-        )
-    }
-    else {
-        return (
-        <div className='container flex justify-start'>
-            <div>
-                Base mods: FP = {result.base[0]}, Hit Rate = {(result.base[1] * 100).toFixed(2)}%, Average Damage Increase From Critical Hits = {(result.base[2] * 100 - 100).toFixed(4)}%. Total damage mod = {result.base[3].toFixed(4)}.
-            </div>
-            <div>
-                The best combination is {result.best[0]} with {result.best[1]} resulting in a {result.best[2].toFixed(2)}% increase over base damage.
-            </div>
-            <div>
-                The second best combination is {result.second[0]} with {result.second[1]} resulting in a {result.second[2].toFixed(2)}% increase over base damage.
-            </div>
-            {result.third[0]
-                ?<div>
-                    The third best combination is {result.third[0]} with {result.third[1]} resulting in a {result.third[2].toFixed(2)}% increase over base damage.
-                </div>
-                :<></>}
-        </div>
-        )
-    }
-    
-}
 export default Form
