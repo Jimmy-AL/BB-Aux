@@ -25,7 +25,7 @@ const Form = () => {
     const hitRate = (equipTotal) => {
         var acc = (accuracy.total + equipTotal) * (100 + accuracy.buffs) / 100;
 
-        return Math.min(1, (0.1 + acc / (acc + enemyStats.evasion + 2) + (luck.total - enemyStats.luck - enemyStats.lvldiff) / 1000 + accuracy.hitBuff / 100));
+        return Math.min(1, (0.1 + acc / (acc + enemyStats.evasion + 2) + (luck.total - enemyStats.luck + enemyStats.lvldiff) / 1000 + accuracy.hitBuff / 100));
     }
     const critBit = (equipAcc, critRate, critDmg) => {
         var acc = (accuracy.total + equipAcc) * (100 + accuracy.buffs) / 100;
